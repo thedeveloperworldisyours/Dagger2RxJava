@@ -22,12 +22,12 @@ public class Repository implements DataSource {
     @Nullable
     private static Repository sInstance = null;
 
-    public static synchronized Repository getInstance() {
-        if (sInstance == null) {
-            sInstance = new Repository();
-        }
-        return sInstance;
-    }
+//    public static synchronized Repository getInstance() {
+//        if (sInstance == null) {
+//            sInstance = new Repository();
+//        }
+//        return sInstance;
+//    }
 
     @Override
     public OkHttpClient getOkHttpClient() {

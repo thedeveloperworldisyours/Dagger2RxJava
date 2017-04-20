@@ -8,6 +8,8 @@ import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -19,13 +21,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ThemePresenter implements ThemeContract.Presenter {
 
-    @NonNull
     private Repository mRepository;
 
-    @NonNull
     private ThemeContract.View mView;
 
-    @NonNull
     private BaseSchedulerProvider mSchedulerProvider;
 
     @NonNull

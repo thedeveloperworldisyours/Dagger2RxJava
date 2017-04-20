@@ -17,15 +17,15 @@ public class SchedulerProvider implements BaseSchedulerProvider {
     private static SchedulerProvider INSTANCE = null;
 
     // Prevent direct instantiation.
-    private SchedulerProvider() {
+    public SchedulerProvider() {
     }
 
-    public static synchronized SchedulerProvider getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new SchedulerProvider();
-        }
-        return INSTANCE;
-    }
+//    public static synchronized SchedulerProvider getInstance() {
+//        if (INSTANCE == null) {
+//            INSTANCE = new SchedulerProvider();
+//        }
+//        return INSTANCE;
+//    }
 
     @Override
     @NonNull
