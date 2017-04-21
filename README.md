@@ -6,7 +6,7 @@ This app has inclided:
 
 Libraries and tools included:
 
-1.Support libraries
+1. Support libraries
 2. **[RecyclerViews]()
 3. **[RxJava](https://github.com/ReactiveX/RxJava) and RxAndroid](https://github.com/ReactiveX/RxAndroid)
 4. **[Retrofit 2](https://github.com/square/retrofit)
