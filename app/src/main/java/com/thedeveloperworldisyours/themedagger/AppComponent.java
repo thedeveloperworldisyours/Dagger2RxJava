@@ -1,5 +1,7 @@
 package com.thedeveloperworldisyours.themedagger;
 
+import com.thedeveloperworldisyours.themedagger.theme.ThemeActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -8,11 +10,9 @@ import dagger.Component;
  * Created by javierg on 20/04/2017.
  */
 @Singleton
-@Component(
-        modules = AppModule.class
-)
+@Component(modules = AppModule.class)
 public interface AppComponent {
 
-    void inject(DiscernApplication discernApplication);
+    void inject(ThemeActivity themeActivity);
 
 }

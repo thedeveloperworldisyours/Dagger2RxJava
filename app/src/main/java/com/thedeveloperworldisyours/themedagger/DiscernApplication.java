@@ -8,18 +8,18 @@ import android.app.Application;
 
 public class DiscernApplication extends Application {
 
-    AppModule mAppModule;
+    AppComponent mAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mAppModule = DaggerAppComponent.builder()
+        mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
     }
 
-    public AppModule getAppComponent() {
-        return mAppModule;
+    public AppComponent getAppComponent() {
+        return mAppComponent;
     }
 
 }

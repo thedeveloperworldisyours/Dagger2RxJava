@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.thedeveloperworldisyours.themedagger.DiscernApplication;
 import com.thedeveloperworldisyours.themedagger.R;
 import com.thedeveloperworldisyours.themedagger.data.Repository;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
@@ -19,20 +20,23 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ThemeActivity extends AppCompatActivity {
 
     @Inject
-    private Repository mRepository;
+    Repository mRepository;
 
     @Inject
-    private BaseSchedulerProvider mSchedulerProvider;
+    BaseSchedulerProvider mSchedulerProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.theme_activity);
-
+        initializeDagger();
         initFragment();
     }
 
-
+    private void initializeDagger() {
+        DiscernApplication app = (DiscernApplication) getApplication();
+        app.getAppComponent().inject(this);
+    }
     private void initFragment () {
         ThemeFragment themeFragment = (ThemeFragment) getSupportFragmentManager().
                 findFragmentById(R.id.theme_activity_contentFrame);
