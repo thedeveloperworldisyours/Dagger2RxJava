@@ -1,5 +1,5 @@
 # Dagger2RxJava
-Dagger2 RxJava
+
 This app has inclided:
 
 **[Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)**
