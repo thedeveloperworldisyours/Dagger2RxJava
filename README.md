@@ -1,6 +1,6 @@
 # Dagger2RxJava
 
-This app has inclided:
+This app inclid:
 
 **[Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)**
 
