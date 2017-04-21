@@ -3,6 +3,7 @@
 This app inclid:
 
 **[Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)**
+
 **[Java8]()**
 
 Libraries and tools included:
