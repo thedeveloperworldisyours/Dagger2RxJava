@@ -113,4 +113,5 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
 //        mSharedPreference.put(THEME, String.valueOf(mListTopics.get(position).getId()));
 //        startActivity(new Intent(getActivity(), LevelActivity.class));
     }
+
 }

@@ -1,8 +1,10 @@
 package com.thedeveloperworldisyours.themedagger.theme;
 
 import android.support.annotation.NonNull;
+import android.util.LruCache;
 
 import com.thedeveloperworldisyours.themedagger.data.Repository;
+import com.thedeveloperworldisyours.themedagger.data.ServiceInteractor;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 
@@ -44,7 +46,11 @@ public class ThemePresenter implements ThemeContract.Presenter {
     @Override
     public void fetch() {
 
-        Subscription subscription = mRepository.getTopicsRx()
+        LruCache<String, List<Topics>> cache = new LruCache<>(5 * 1024 * 1024); // 5MiB
+
+        final ServiceInteractor interactor = new ServiceInteractor(mRepository.getService(), cache);
+
+        Subscription subscription = interactor.searchUsers()
                 .subscribeOn(mSchedulerProvider.computation())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe((List<Topics> listTopics) -> {

@@ -37,6 +37,7 @@ public class ThemeActivity extends AppCompatActivity {
         DiscernApplication app = (DiscernApplication) getApplication();
         app.getAppComponent().inject(this);
     }
+
     private void initFragment () {
         ThemeFragment themeFragment = (ThemeFragment) getSupportFragmentManager().
                 findFragmentById(R.id.theme_activity_contentFrame);
@@ -46,16 +47,6 @@ public class ThemeActivity extends AppCompatActivity {
                     themeFragment, R.id.theme_activity_contentFrame);
         }
         new ThemePresenter(mRepository, themeFragment, mSchedulerProvider);
-// Create the presenter
-//        DaggerThemeComponent.builder()
-//        .themeRepositoryComponent((DiscernApplication)getApplication()).reposgetRepositoryComponent())
-//        .themePresenterModule(new ThemeModule(themeFragment, )).build()
-//                .inject(this);
-
-//        DaggerTasksComponent.builder()
-//                .tasksRepositoryComponent(((ToDoApplication) getApplication()).getTasksRepositoryComponent())
-//                .tasksPresenterModule(new TasksPresenterModule(tasksFragment)).build()
-//                .inject(this);
 
     }
 

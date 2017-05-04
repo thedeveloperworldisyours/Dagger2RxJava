@@ -3,6 +3,7 @@ package com.thedeveloperworldisyours.themedagger.data;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
 import rx.Observable;
 
 /**
@@ -11,9 +12,8 @@ import rx.Observable;
 
 public interface DataSource {
 
-    Service getService();
+    Retrofit getService();
 
     OkHttpClient getOkHttpClient();
 
-    Observable<List<Topics>> getTopicsRx();
 }

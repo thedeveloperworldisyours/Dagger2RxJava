@@ -39,22 +39,16 @@ public class Repository implements DataSource {
     }
 
     @Override
-    public Service getService() {
-        Retrofit retrofit = new Retrofit.Builder()
+    public Retrofit getService() {
+
+        return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(Service.URL_BASE)
                 .client(getOkHttpClient())
                 .build();
-
-        return retrofit.create(Service.class);
     }
 
-    @Override
-    public Observable<List<Topics>> getTopicsRx() {
-
-        return getService().getTopicsRx();
-    }
 
 
 
