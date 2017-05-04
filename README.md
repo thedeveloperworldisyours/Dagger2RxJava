@@ -4,6 +4,8 @@ This app inclid:
 
 **[Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)**
 
+**[Java8]()**
+
 Libraries and tools included:
 
 1. Support libraries
@@ -12,7 +14,9 @@ Libraries and tools included:
 4. **[Retrofit 2](https://github.com/square/retrofit)**
 5. **[Dagger 2](https://google.github.io/dagger/)**
 6. **[Butterknife](https://github.com/JakeWharton/butterknife)**
-
+7. **[Retrolambda](https://github.com/evant/gradle-retrolambda)**
+8. **[Guava](https://github.com/google/guava)**
+9. **[Okhttp](https://github.com/square/okhttp)**
 
 Also visit my blog: **[The developer world is yours](http://thedeveloperworldisyours.com/)**
 
