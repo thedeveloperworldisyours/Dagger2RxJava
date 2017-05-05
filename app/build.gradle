@@ -66,13 +66,15 @@ dependencies {
     compile "io.reactivex:rxjava:$rootProject.rxjavaVersion"
     compile "io.reactivex:rxandroid:$rootProject.rxandroidVersion"
 
-
     // Retrofit
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.retrofit"
     compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.retrofit2rxjava2adapter"
+
+    // OkHttp
     compile "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
+    testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.okhttp"
 
     //Dagger
     compile "com.google.dagger:dagger:$rootProject.dagger"
@@ -81,6 +83,13 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger"
 
     // Butter knife
-    compile "com.jakewharton:butterknife:$rootProject.ext.butterknife"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknife"
+    compile "com.jakewharton:butterknife:$rootProject.butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife"
+
+    // Mockito
+    testCompile "org.mockito:mockito-core:$rootProject.mockito"
+
+    // AssertJ
+    testCompile 'org.assertj:assertj-core:2.5.0'
+
 }
