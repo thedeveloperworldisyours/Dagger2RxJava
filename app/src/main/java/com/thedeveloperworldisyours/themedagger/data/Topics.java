@@ -37,4 +37,8 @@ public class Topics {
         this.name = name;
     }
 
+    public static Topics create(Integer id, String name) {
+        return new Topics(id, name);
+    }
+
 }

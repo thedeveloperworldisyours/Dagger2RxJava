@@ -40,4 +40,5 @@ ext {
     okhttp = '3.3.1'
     dagger = '2.10'
     mockito = '1.10.19'
+    assertj = '2.7.0'
 }
