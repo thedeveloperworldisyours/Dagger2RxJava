@@ -2,6 +2,8 @@
 
 In this example you can learn how to test server call with Mockito, JUnit, Retrofit, RxJava and Dagger 2.
 
+[You'll find the supporting medium article for this project here!](http://thedeveloperworldisyours.com/android/test-server-call-mockito-retrofit-rxjava/#sthash.rV5rSl3u.dpbs)
+
 This app inclid:
 
 **[Android Architecture Blueprints](https://github.com/googlesamples/android-architecture)**
@@ -21,6 +23,8 @@ Libraries and tools included:
 9. **[Okhttp](https://github.com/square/okhttp)**
 10. **[JUnit](http://junit.org/junit4/)**
 11. **[Mockito](http://site.mockito.org/)**
+
+
 
 Also visit my blog: **[The developer world is yours](http://thedeveloperworldisyours.com/)**
 
