@@ -21,8 +21,6 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.observers.TestSubscriber;
 
-import static com.thedeveloperworldisyours.themedagger.data.PredicateUtils.check;
-import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -46,12 +44,10 @@ public class ServiceInteractorTest {
     public void mockService() {
 
         Topics topics = new Topics(1, "football");
-//        Topics topicSecond = new Topics(2, "Beaches");
         List<Topics> result = new ArrayList();
-
         result.add(topics);
-        // create singleton list
-//        result = Collections.singletonList(topics);
+
+
 
         MockWebServer mockService = new MockWebServer();
         mockService.enqueue(new MockResponse().setBody(new Gson().toJson(result)));
@@ -65,21 +61,23 @@ public class ServiceInteractorTest {
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
         ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
         serviceInteractor.searchUsers().subscribe(subscriber);
-//        subscriber.assertValue(check(l ->
-//                assertThat(l).isEqualTo(Topics.create(1, "Total")))
-//        );
+
+
+
         subscriber.assertNoErrors();
         subscriber.assertCompleted();
     }
 
     @Test
     public void callServiceTest() {
+
         Topics topics = new Topics(1, "Discern The Beach");
         Topics topicsTwo = new Topics(2, "Discern The Football Player");
-//        Topics topicSecond = new Topics(2, "Beaches");
         List<Topics> result = new ArrayList();
         result.add(topics);
         result.add(topicsTwo);
+
+
 
         MockWebServer mockWebServer = new MockWebServer();
         mockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(result)));
@@ -93,6 +91,8 @@ public class ServiceInteractorTest {
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
         ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
         serviceInteractor.searchUsers().subscribe(subscriber);
+
+
 
         subscriber.assertNoErrors();
         subscriber.assertCompleted();

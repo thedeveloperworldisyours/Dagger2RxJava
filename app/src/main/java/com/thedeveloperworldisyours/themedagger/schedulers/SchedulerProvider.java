@@ -13,19 +13,9 @@ import rx.schedulers.Schedulers;
 
 public class SchedulerProvider implements BaseSchedulerProvider {
 
-    @Nullable
-    private static SchedulerProvider INSTANCE = null;
-
     // Prevent direct instantiation.
     public SchedulerProvider() {
     }
-
-//    public static synchronized SchedulerProvider getInstance() {
-//        if (INSTANCE == null) {
-//            INSTANCE = new SchedulerProvider();
-//        }
-//        return INSTANCE;
-//    }
 
     @Override
     @NonNull
