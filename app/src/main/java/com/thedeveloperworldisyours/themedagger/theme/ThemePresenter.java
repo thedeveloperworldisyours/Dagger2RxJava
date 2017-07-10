@@ -10,8 +10,6 @@ import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -50,7 +48,7 @@ public class ThemePresenter implements ThemeContract.Presenter {
 
         final ServiceInteractor interactor = new ServiceInteractor(mRepository.getService(), cache);
 
-        Subscription subscription = interactor.searchUsers()
+        Subscription subscription = interactor.getTopics()
                 .subscribeOn(mSchedulerProvider.computation())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe((List<Topics> listTopics) -> {

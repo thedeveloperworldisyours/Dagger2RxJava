@@ -20,7 +20,7 @@ public class ServiceInteractor {
         this.service = retrofit.create(Service.class);
     }
 
-    public Observable<List<Topics>> searchUsers() {
+    public Observable<List<Topics>> getTopics() {
         return Observable.concat(cachedResults(), networkResults()).first();
     }
 

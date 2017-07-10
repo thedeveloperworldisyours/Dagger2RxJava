@@ -60,7 +60,7 @@ public class ServiceInteractorTest {
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
         ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-        serviceInteractor.searchUsers().subscribe(subscriber);
+        serviceInteractor.getTopics().subscribe(subscriber);
 
 
 
@@ -90,7 +90,7 @@ public class ServiceInteractorTest {
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
         ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-        serviceInteractor.searchUsers().subscribe(subscriber);
+        serviceInteractor.getTopics().subscribe(subscriber);
 
 
 
