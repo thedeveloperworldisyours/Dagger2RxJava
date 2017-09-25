@@ -50,7 +50,6 @@ public class ThemeActivity extends AppCompatActivity {
 
     }
 
-
     public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
                                              @NonNull Fragment fragment, int frameId) {
         checkNotNull(fragmentManager);
