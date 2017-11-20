@@ -2,7 +2,7 @@
 
 In this example you can learn how to test server call with Mockito, JUnit, Retrofit, RxJava and Dagger 2.
 
-[You'll find the supporting medium article for this project here!](http://thedeveloperworldisyours.com/android/test-server-call-mockito-retrofit-rxjava/#sthash.rV5rSl3u.dpbs)
+[You'll find the supporting article for this project here!](http://thedeveloperworldisyours.com/android/test-server-call-mockito-retrofit-rxjava/#sthash.rV5rSl3u.dpbs)
 
 This app inclid:
 
