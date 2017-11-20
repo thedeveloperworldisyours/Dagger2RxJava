@@ -80,9 +80,8 @@ public class ThemePresenterTest {
     @Test
     public void fetchError() {
 
-        Exception exception = new Exception();
         when(mRemoteDataSource.getTopicsRx())
-                .thenReturn(Observable.error(exception));
+                .thenReturn(Observable.error(new Throwable("An error has occurred!")));
         mThemePresenter.fetch();
 
         InOrder inOrder = Mockito.inOrder(mView);
