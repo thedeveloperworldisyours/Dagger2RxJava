@@ -3,7 +3,7 @@ package com.thedeveloperworldisyours.themedagger;
 import android.util.LruCache;
 
 import com.google.gson.Gson;
-import com.thedeveloperworldisyours.themedagger.data.ServiceInteractor;
+import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 
 import org.junit.Before;
@@ -59,9 +59,10 @@ public class ServiceInteractorTest {
                 .build();
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
-        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-        serviceInteractor.getTopics().subscribe(subscriber);
-
+//        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
+//        serviceInteractor.getTopics().subscribe(subscriber);
+        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
+        remoteDataSource.getTopicsRx().subscribe(subscriber);
 
 
         subscriber.assertNoErrors();
@@ -89,8 +90,11 @@ public class ServiceInteractorTest {
                 .build();
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
-        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-        serviceInteractor.getTopics().subscribe(subscriber);
+//        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
+//        serviceInteractor.getTopics().subscribe(subscriber);
+
+        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
+        remoteDataSource.getTopicsRx().subscribe(subscriber);
 
 
 

@@ -68,12 +68,12 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
         mPresenter = presenter;
     }
 
-    @OnClick(R.id.theme_fragment_retry_button)
-    public void retry(View view) {
-        mProgressBar.setVisibility(View.VISIBLE);
-        mRetry.setVisibility(View.GONE);
-        mPresenter.fetch();
-    }
+        @OnClick(R.id.theme_fragment_retry_button)
+        public void retry(View view) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mRetry.setVisibility(View.GONE);
+            mPresenter.fetch();
+        }
 
     @Override
     public void showTopics(List<Topics> list) {

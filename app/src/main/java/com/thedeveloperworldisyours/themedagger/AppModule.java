@@ -1,6 +1,5 @@
 package com.thedeveloperworldisyours.themedagger;
 
-import com.thedeveloperworldisyours.themedagger.data.Repository;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.themedagger.schedulers.SchedulerProvider;
 
@@ -19,12 +18,6 @@ public class AppModule {
 
     public AppModule(DiscernApplication discernApplication) {
         mDiscernApplication = discernApplication;
-    }
-
-    @Singleton
-    @Provides
-    Repository provideRepository() {
-        return new Repository();
     }
 
     @Singleton

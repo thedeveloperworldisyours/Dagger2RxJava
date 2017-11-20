@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import com.thedeveloperworldisyours.themedagger.DiscernApplication;
 import com.thedeveloperworldisyours.themedagger.R;
-import com.thedeveloperworldisyours.themedagger.data.Repository;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 
 
@@ -18,9 +17,6 @@ import javax.inject.Inject;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ThemeActivity extends AppCompatActivity {
-
-    @Inject
-    Repository mRepository;
 
     @Inject
     BaseSchedulerProvider mSchedulerProvider;
@@ -46,7 +42,7 @@ public class ThemeActivity extends AppCompatActivity {
             addFragmentToActivity(getSupportFragmentManager(),
                     themeFragment, R.id.theme_activity_contentFrame);
         }
-        new ThemePresenter(mRepository, themeFragment, mSchedulerProvider);
+        new ThemePresenter(themeFragment, mSchedulerProvider);
 
     }
 
