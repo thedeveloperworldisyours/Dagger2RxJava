@@ -1,5 +1,7 @@
 package com.thedeveloperworldisyours.themedagger;
 
+import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
+import com.thedeveloperworldisyours.themedagger.data.Service;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.themedagger.schedulers.SchedulerProvider;
 
@@ -7,6 +9,11 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.thedeveloperworldisyours.themedagger.data.Service.URL_BASE;
 
 /**
  * Created by javierg on 20/04/2017.
@@ -19,6 +26,14 @@ public class AppModule {
     public AppModule(DiscernApplication discernApplication) {
         mDiscernApplication = discernApplication;
     }
+
+    @Singleton
+    @Provides
+    RemoteDataSource provideRemoteDataSource() {return new RemoteDataSource( new Retrofit.Builder()
+            .baseUrl(URL_BASE)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .build());}
 
     @Singleton
     @Provides

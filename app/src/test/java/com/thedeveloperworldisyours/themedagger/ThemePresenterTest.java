@@ -1,5 +1,6 @@
 package com.thedeveloperworldisyours.themedagger;
 
+import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Service;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
@@ -19,7 +20,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+
+import static io.reactivex.Maybe.error;
 import static org.mockito.Matchers.anyList;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,10 +36,7 @@ import static org.mockito.Mockito.when;
 public class ThemePresenterTest {
 
     @Mock
-    private Service mService;
-
-    @Mock
-    private Repository mRepository;
+    private RemoteDataSource mRemoteDataSource;
 
     @Mock
     private ThemeContract.View mView;
@@ -56,59 +58,36 @@ public class ThemePresenterTest {
         mList.add(topicsTwo);
 
         mSchedulerProvider = new ImmediateSchedulerProvider();
-        mThemePresenter = new ThemePresenter(mRepository, mView, mSchedulerProvider);
+        mThemePresenter = new ThemePresenter(mRemoteDataSource, mView, mSchedulerProvider);
 
 
     }
 
-//    @Test
-//    public void fetchAllTopics() {
-//
-//        doReturn(Observable.just(result))
-//        .when(mRepository.getService());
-//
-//        verify(mView).showTopics(result);
-//
-//    }
-
     @Test
-    public  void fetchData() {
+    public void fetchData() {
 
-        when(mService.getTopicsRx())
+        when(mRemoteDataSource.getTopicsRx())
                 .thenReturn(rx.Observable.just(mList));
 
         mThemePresenter.fetch();
 
         InOrder inOrder = Mockito.inOrder(mView);
-        inOrder.verify(mView, times(1)).setLoadingIndicator(false);
-        inOrder.verify(mView, times(1)).showTopics(anyList());
-
-
+        inOrder.verify(mView).setLoadingIndicator(false);
+        inOrder.verify(mView).showTopics(mList);
 
     }
 
+    @Test
+    public void fetchError() {
 
-//    @Test
-//    public void fetchErrorShouldReturnErrorToView() {
-//
-//        Exception exception = new Exception();
-//
-//        when(charactersDataSource.getCharacters())
-//                .thenReturn(rx.Observable.<CharactersResponseModel>error(exception));
-//
-//        MainPresenter mainPresenter = new MainPresenter(
-//                this.charactersDataSource,
-//                Schedulers.immediate(),
-//                Schedulers.immediate(),
-//                this.view
-//        );
-//
-//        mainPresenter.loadData();
-//
-//        InOrder inOrder = Mockito.inOrder(view);
-//        inOrder.verify(view, times(1)).onFetchDataStarted();
-//        inOrder.verify(view, times(1)).onFetchDataError(exception);
-//        verify(view, never()).onFetchDataCompleted();
-//    }
+        Exception exception = new Exception();
+        when(mRemoteDataSource.getTopicsRx())
+                .thenReturn(Observable.error(exception));
+        mThemePresenter.fetch();
+
+        InOrder inOrder = Mockito.inOrder(mView);
+        inOrder.verify(mView).showError();
+        verify(mView, never()).showTopics(anyList());
+    }
 
 }

@@ -3,6 +3,7 @@ package com.thedeveloperworldisyours.themedagger.theme;
 import android.support.annotation.NonNull;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
+import com.thedeveloperworldisyours.themedagger.data.Service;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 
@@ -23,44 +24,38 @@ import static com.thedeveloperworldisyours.themedagger.data.Service.URL_BASE;
 
 public class ThemePresenter implements ThemeContract.Presenter {
 
-
+    @NonNull
     private ThemeContract.View mView;
 
+    @NonNull
     private BaseSchedulerProvider mSchedulerProvider;
 
     @NonNull
     private CompositeSubscription mSubscriptions;
 
-    RemoteDataSource mRemoteDataSource;
+    @NonNull
+    private RemoteDataSource mRemoteDataSource;
 
-    Retrofit mRetrofit;
 
-
-    public ThemePresenter(@NonNull ThemeContract.View view, @NonNull BaseSchedulerProvider provider) {
+    public ThemePresenter(@NonNull RemoteDataSource remoteDataSource, @NonNull ThemeContract.View view, @NonNull BaseSchedulerProvider provider) {
+        this.mRemoteDataSource = checkNotNull(remoteDataSource, "remoteDataSource");
         this.mView = checkNotNull(view, "view cannot be null!");
         this.mSchedulerProvider = checkNotNull(provider, "schedulerProvider cannot be null");
 
         mSubscriptions = new CompositeSubscription();
-
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(URL_BASE)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-
-        mRemoteDataSource = new RemoteDataSource(mRetrofit);
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(URL_BASE)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build();
+//
+//        mRemoteDataSource = new RemoteDataSource(retrofit);
 
         mView.setPresenter(this);
     }
 
     @Override
     public void fetch() {
-
-//        LruCache<String, List<Topics>> cache = new LruCache<>(5 * 1024 * 1024); // 5MiB
-
-//        final ServiceInteractor interactor = new ServiceInteractor(mRepository.getService(), cache);
-
-
 
         Subscription subscription = mRemoteDataSource.getTopicsRx()
                 .subscribeOn(mSchedulerProvider.computation())

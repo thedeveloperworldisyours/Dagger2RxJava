@@ -30,14 +30,11 @@ import static org.mockito.Mockito.when;
 
 public class ServiceInteractorTest {
 
-    @Mock
-    private LruCache<String, List<Topics>> mCache;
 
     @Before
     public void setup(){
 
         MockitoAnnotations.initMocks(this);
-        when(mCache.get(anyString())).thenReturn(null);
     }
 
     @Test
@@ -59,8 +56,6 @@ public class ServiceInteractorTest {
                 .build();
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
-//        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-//        serviceInteractor.getTopics().subscribe(subscriber);
         RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
         remoteDataSource.getTopicsRx().subscribe(subscriber);
 
@@ -90,8 +85,6 @@ public class ServiceInteractorTest {
                 .build();
 
         TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
-//        ServiceInteractor serviceInteractor = new ServiceInteractor(retrofit, mCache);
-//        serviceInteractor.getTopics().subscribe(subscriber);
 
         RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
         remoteDataSource.getTopicsRx().subscribe(subscriber);

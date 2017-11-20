@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.thedeveloperworldisyours.themedagger.DiscernApplication;
 import com.thedeveloperworldisyours.themedagger.R;
+import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 
 
@@ -17,6 +18,9 @@ import javax.inject.Inject;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class ThemeActivity extends AppCompatActivity {
+
+    @Inject
+    RemoteDataSource mRemoteDataSource;
 
     @Inject
     BaseSchedulerProvider mSchedulerProvider;
@@ -42,7 +46,7 @@ public class ThemeActivity extends AppCompatActivity {
             addFragmentToActivity(getSupportFragmentManager(),
                     themeFragment, R.id.theme_activity_contentFrame);
         }
-        new ThemePresenter(themeFragment, mSchedulerProvider);
+        new ThemePresenter(mRemoteDataSource, themeFragment, mSchedulerProvider);
 
     }
 
