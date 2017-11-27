@@ -41,7 +41,7 @@ public class RemoteDataSourceTest {
     }
 
     @Test
-    public void mockService() {
+    public void callToServiceWithError() {
         //Given
         String url = "dfdf/";
         mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
@@ -61,7 +61,7 @@ public class RemoteDataSourceTest {
     }
 
     @Test
-    public void callServiceTest() {
+    public void callToServiceWithSuccessful() {
         //Given
         String url = "https://guessthebeach.herokuapp.com/api/";
         mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
