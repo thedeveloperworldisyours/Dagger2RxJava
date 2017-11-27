@@ -41,7 +41,7 @@ public class RemoteDataSourceTest {
     }
 
     @Test
-    public void callToServiceWithError() {
+    public void serverCallWithError() {
         //Given
         String url = "dfdf/";
         mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
@@ -50,9 +50,9 @@ public class RemoteDataSourceTest {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(mMockWebServer.url(url))
                 .build();
+        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
 
         //When
-        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
         remoteDataSource.getTopicsRx().subscribe(mSubscriber);
 
         //Then
@@ -61,7 +61,7 @@ public class RemoteDataSourceTest {
     }
 
     @Test
-    public void callToServiceWithSuccessful() {
+    public void severCallWithSuccessful() {
         //Given
         String url = "https://guessthebeach.herokuapp.com/api/";
         mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
@@ -70,9 +70,9 @@ public class RemoteDataSourceTest {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(mMockWebServer.url(url))
                 .build();
+        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
 
         //When
-        RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
         remoteDataSource.getTopicsRx().subscribe(mSubscriber);
 
         //Then
