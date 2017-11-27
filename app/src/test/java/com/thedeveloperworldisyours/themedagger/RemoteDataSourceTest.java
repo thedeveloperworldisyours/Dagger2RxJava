@@ -1,15 +1,11 @@
 package com.thedeveloperworldisyours.themedagger;
 
-import android.util.LruCache;
 
 import com.google.gson.Gson;
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,21 +17,11 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.observers.TestSubscriber;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
-
 /**
  * Created by javierg on 05/05/2017.
  */
 
-public class ServiceInteractorTest {
-
-
-    @Before
-    public void setup(){
-
-        MockitoAnnotations.initMocks(this);
-    }
+public class RemoteDataSourceTest {
 
     @Test
     public void mockService() {
