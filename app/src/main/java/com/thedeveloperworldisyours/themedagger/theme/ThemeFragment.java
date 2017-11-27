@@ -1,6 +1,7 @@
 package com.thedeveloperworldisyours.themedagger.theme;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.support.design.widget.Snackbar.LENGTH_LONG;
 
 public class ThemeFragment extends Fragment implements ThemeContract.View, ThemeAdapter.MyClickListener {
 
@@ -58,8 +61,7 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.theme_fragment, container, false);
         ButterKnife.bind(this, view);
-        mPresenter.fetch();
-//        mSharedPreference = SharedPreference.getInstance(getActivity().getApplicationContext());
+        mPresenter.subscribe();
         return view;
     }
 
@@ -90,7 +92,7 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
     public void showError() {
         mProgressBar.setVisibility(View.GONE);
         mRetry.setVisibility(View.VISIBLE);
-//        Utils.customSnackBar(getActivity().getString(R.string.no_connection), R.color.colorCancel, mRelativeLayout);
+        Snackbar.make(mRelativeLayout, getActivity().getResources().getText(R.string.error_server).toString(), LENGTH_LONG).show();
         mRetry.setText(getString(R.string.retry));
     }
 
@@ -110,7 +112,6 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
 
     @Override
     public void onItemClick(int position, View v) {
-//        mSharedPreference.put(THEME, String.valueOf(mListTopics.get(position).getId()));
 //        startActivity(new Intent(getActivity(), LevelActivity.class));
     }
 

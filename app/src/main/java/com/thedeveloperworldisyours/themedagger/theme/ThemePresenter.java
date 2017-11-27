@@ -1,6 +1,7 @@
 package com.thedeveloperworldisyours.themedagger.theme;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
@@ -54,6 +55,7 @@ public class ThemePresenter implements ThemeContract.Presenter {
                         },
                         (Throwable error) -> {
                             try {
+                                Log.d("Throwable", error.toString());
                                 mView.showError();
                             } catch (Throwable t) {
                                 throw new IllegalThreadStateException();

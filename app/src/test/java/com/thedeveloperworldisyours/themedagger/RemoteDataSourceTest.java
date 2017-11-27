@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -23,63 +24,60 @@ import rx.observers.TestSubscriber;
 
 public class RemoteDataSourceTest {
 
+    List<Topics> mResultList;
+    MockWebServer mMockWebServer;
+    TestSubscriber<List<Topics>> mSubscriber;
+
+    @Before
+    public void setUp() {
+        Topics topics = new Topics(1, "Discern The Beach");
+        Topics topicsTwo = new Topics(2, "Discern The Football Player");
+        mResultList = new ArrayList();
+        mResultList.add(topics);
+        mResultList.add(topicsTwo);
+
+        mMockWebServer = new MockWebServer();
+        mSubscriber = new TestSubscriber<>();
+    }
+
     @Test
     public void mockService() {
-
-        Topics topics = new Topics(1, "football");
-        List<Topics> result = new ArrayList();
-        result.add(topics);
-
-
-
-        MockWebServer mockService = new MockWebServer();
-        mockService.enqueue(new MockResponse().setBody(new Gson().toJson(result)));
-
+        //Given
+        String url = "dfdf/";
+        mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(mockService.url("dfdf/"))
+                .baseUrl(mMockWebServer.url(url))
                 .build();
 
-        TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
+        //When
         RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
-        remoteDataSource.getTopicsRx().subscribe(subscriber);
+        remoteDataSource.getTopicsRx().subscribe(mSubscriber);
 
-
-        subscriber.assertNoErrors();
-        subscriber.assertCompleted();
+        //Then
+        mSubscriber.assertNoErrors();
+        mSubscriber.assertCompleted();
     }
 
     @Test
     public void callServiceTest() {
-
-        Topics topics = new Topics(1, "Discern The Beach");
-        Topics topicsTwo = new Topics(2, "Discern The Football Player");
-        List<Topics> result = new ArrayList();
-        result.add(topics);
-        result.add(topicsTwo);
-
-
-
-        MockWebServer mockWebServer = new MockWebServer();
-        mockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(result)));
-
+        //Given
+        String url = "https://guessthebeach.herokuapp.com/api/";
+        mMockWebServer.enqueue(new MockResponse().setBody(new Gson().toJson(mResultList)));
         Retrofit retrofit = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(mockWebServer.url("https://guessthebeach.herokuapp.com/api/"))
+                .baseUrl(mMockWebServer.url(url))
                 .build();
 
-        TestSubscriber<List<Topics>> subscriber = new TestSubscriber<>();
-
+        //When
         RemoteDataSource remoteDataSource = new RemoteDataSource(retrofit);
-        remoteDataSource.getTopicsRx().subscribe(subscriber);
+        remoteDataSource.getTopicsRx().subscribe(mSubscriber);
 
-
-
-        subscriber.assertNoErrors();
-        subscriber.assertCompleted();
+        //Then
+        mSubscriber.assertNoErrors();
+        mSubscriber.assertCompleted();
     }
-
 
 }
