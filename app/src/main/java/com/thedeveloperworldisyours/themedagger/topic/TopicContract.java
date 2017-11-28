@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.theme;
+package com.thedeveloperworldisyours.themedagger.topic;
 
 
 import com.thedeveloperworldisyours.themedagger.BasePresenter;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by javierg on 19/04/2017.
  */
 
-public interface ThemeContract {
+public interface TopicContract {
 
     interface Presenter extends BasePresenter {
         void fetch();

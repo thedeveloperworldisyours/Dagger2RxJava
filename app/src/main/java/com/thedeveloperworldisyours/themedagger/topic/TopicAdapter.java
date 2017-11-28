@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.theme;
+package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -21,13 +21,13 @@ import butterknife.ButterKnife;
  * Created by javierg on 19/04/2017.
  */
 
-public class ThemeAdapter extends RecyclerView
-        .Adapter<ThemeAdapter
+public class TopicAdapter extends RecyclerView
+        .Adapter<TopicAdapter
         .DataObjectHolder> {
 
     private Context mContext;
     private List<Topics> mList;
-    private static ThemeAdapter.MyClickListener sClickListener;
+    private static TopicAdapter.MyClickListener sClickListener;
     // Allows to remember the last item shown on screen
     private int lastPosition = -1;
 
@@ -49,17 +49,17 @@ public class ThemeAdapter extends RecyclerView
         }
     }
 
-    public void setOnItemClickListener(ThemeAdapter.MyClickListener myClickListener) {
+    public void setOnItemClickListener(TopicAdapter.MyClickListener myClickListener) {
         this.sClickListener = myClickListener;
     }
 
-    public ThemeAdapter(Context context, List<Topics> list) {
+    public TopicAdapter(Context context, List<Topics> list) {
         mContext = context;
         mList = list;
     }
 
     @Override
-    public ThemeAdapter.DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TopicAdapter.DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list, parent, false);
 
@@ -68,7 +68,7 @@ public class ThemeAdapter extends RecyclerView
     }
 
     @Override
-    public void onBindViewHolder(ThemeAdapter.DataObjectHolder holder, int position) {
+    public void onBindViewHolder(TopicAdapter.DataObjectHolder holder, int position) {
 
         holder.mName.setText(mList.get(position).getName());
         // Here you apply the animation when the view is bound

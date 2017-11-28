@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.theme;
+package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class ThemeActivity extends AppCompatActivity {
+public class TopicActivity extends AppCompatActivity {
 
     @Inject
     RemoteDataSource mRemoteDataSource;
@@ -39,14 +39,14 @@ public class ThemeActivity extends AppCompatActivity {
     }
 
     private void initFragment () {
-        ThemeFragment themeFragment = (ThemeFragment) getSupportFragmentManager().
+        TopicFragment themeFragment = (TopicFragment) getSupportFragmentManager().
                 findFragmentById(R.id.theme_activity_contentFrame);
         if (themeFragment == null) {
             themeFragment = themeFragment.newInstance();
             addFragmentToActivity(getSupportFragmentManager(),
                     themeFragment, R.id.theme_activity_contentFrame);
         }
-        new ThemePresenter(mRemoteDataSource, themeFragment, mSchedulerProvider);
+        new TopicPresenter(mRemoteDataSource, themeFragment, mSchedulerProvider);
 
     }
 

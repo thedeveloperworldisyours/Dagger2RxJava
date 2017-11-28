@@ -3,7 +3,7 @@
     android:id="@+id/theme_fragment_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.thedeveloperworldisyours.themedagger.theme.ThemeActivity">
+    tools:context="com.thedeveloperworldisyours.themedagger.topic.TopicActivity">
 
     <ImageView
         android:id="@+id/theme_fragment_image"

@@ -1,6 +1,6 @@
 package com.thedeveloperworldisyours.themedagger;
 
-import com.thedeveloperworldisyours.themedagger.theme.ThemeActivity;
+import com.thedeveloperworldisyours.themedagger.topic.TopicActivity;
 
 import javax.inject.Singleton;
 
@@ -13,6 +13,6 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
 
-    void inject(ThemeActivity themeActivity);
+    void inject(TopicActivity themeActivity);
 
 }

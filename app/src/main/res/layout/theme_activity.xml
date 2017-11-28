@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.thedeveloperworldisyours.themedagger.theme.ThemeActivity">
+    tools:context="com.thedeveloperworldisyours.themedagger.topic.TopicActivity">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/theme_activity_coordinatorLayout"

@@ -1,12 +1,11 @@
 package com.thedeveloperworldisyours.themedagger;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
-import com.thedeveloperworldisyours.themedagger.data.Service;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.themedagger.schedulers.ImmediateSchedulerProvider;
-import com.thedeveloperworldisyours.themedagger.theme.ThemeContract;
-import com.thedeveloperworldisyours.themedagger.theme.ThemePresenter;
+import com.thedeveloperworldisyours.themedagger.topic.TopicContract;
+import com.thedeveloperworldisyours.themedagger.topic.TopicPresenter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +24,6 @@ import rx.Observable;
 import static io.reactivex.Maybe.error;
 import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,17 +31,17 @@ import static org.mockito.Mockito.when;
  * Created by javierg on 10/07/2017.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ThemePresenterTest {
+public class TopicPresenterTest {
 
     @Mock
     private RemoteDataSource mRemoteDataSource;
 
     @Mock
-    private ThemeContract.View mView;
+    private TopicContract.View mView;
 
     private BaseSchedulerProvider mSchedulerProvider;
 
-    ThemePresenter mThemePresenter;
+    TopicPresenter mPresenter;
 
     List<Topics> mList;
 
@@ -58,7 +56,7 @@ public class ThemePresenterTest {
         mList.add(topicsTwo);
 
         mSchedulerProvider = new ImmediateSchedulerProvider();
-        mThemePresenter = new ThemePresenter(mRemoteDataSource, mView, mSchedulerProvider);
+        mPresenter = new TopicPresenter(mRemoteDataSource, mView, mSchedulerProvider);
 
 
     }
@@ -69,7 +67,7 @@ public class ThemePresenterTest {
         when(mRemoteDataSource.getTopicsRx())
                 .thenReturn(rx.Observable.just(mList));
 
-        mThemePresenter.fetch();
+        mPresenter.fetch();
 
         InOrder inOrder = Mockito.inOrder(mView);
         inOrder.verify(mView).setLoadingIndicator(false);
@@ -82,7 +80,7 @@ public class ThemePresenterTest {
 
         when(mRemoteDataSource.getTopicsRx())
                 .thenReturn(Observable.error(new Throwable("An error has occurred!")));
-        mThemePresenter.fetch();
+        mPresenter.fetch();
 
         InOrder inOrder = Mockito.inOrder(mView);
         inOrder.verify(mView).showError();

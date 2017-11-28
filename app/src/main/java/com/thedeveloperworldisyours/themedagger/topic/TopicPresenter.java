@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.theme;
+package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -18,10 +18,10 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Created by javierg on 19/04/2017.
  */
 
-public class ThemePresenter implements ThemeContract.Presenter {
+public class TopicPresenter implements TopicContract.Presenter {
 
     @NonNull
-    private ThemeContract.View mView;
+    private TopicContract.View mView;
 
     @NonNull
     private BaseSchedulerProvider mSchedulerProvider;
@@ -33,7 +33,7 @@ public class ThemePresenter implements ThemeContract.Presenter {
     private RemoteDataSource mRemoteDataSource;
 
 
-    public ThemePresenter(@NonNull RemoteDataSource remoteDataSource, @NonNull ThemeContract.View view, @NonNull BaseSchedulerProvider provider) {
+    public TopicPresenter(@NonNull RemoteDataSource remoteDataSource, @NonNull TopicContract.View view, @NonNull BaseSchedulerProvider provider) {
         this.mRemoteDataSource = checkNotNull(remoteDataSource, "remoteDataSource");
         this.mView = checkNotNull(view, "view cannot be null!");
         this.mSchedulerProvider = checkNotNull(provider, "schedulerProvider cannot be null");
@@ -55,7 +55,6 @@ public class ThemePresenter implements ThemeContract.Presenter {
                         },
                         (Throwable error) -> {
                             try {
-                                Log.d("Throwable", error.toString());
                                 mView.showError();
                             } catch (Throwable t) {
                                 throw new IllegalThreadStateException();

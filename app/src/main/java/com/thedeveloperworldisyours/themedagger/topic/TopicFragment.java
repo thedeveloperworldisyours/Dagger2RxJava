@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.theme;
+package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
 
 import static android.support.design.widget.Snackbar.LENGTH_LONG;
 
-public class ThemeFragment extends Fragment implements ThemeContract.View, ThemeAdapter.MyClickListener {
+public class TopicFragment extends Fragment implements TopicContract.View, TopicAdapter.MyClickListener {
 
     @BindView(R.id.theme_fragment_progress)
     ProgressBar mProgressBar;
@@ -40,14 +40,14 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
     List<Topics> mListTopics;
 
 //    private SharedPreference mSharedPreference;
-    private ThemeContract.Presenter mPresenter;
+    private TopicContract.Presenter mPresenter;
 
-    public ThemeFragment() {
+    public TopicFragment() {
         // Required empty public constructor
     }
 
-    public static ThemeFragment newInstance() {
-        return new ThemeFragment();
+    public static TopicFragment newInstance() {
+        return new TopicFragment();
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
     }
 
     @Override
-    public void setPresenter(ThemeContract.Presenter presenter) {
+    public void setPresenter(TopicContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
@@ -83,7 +83,7 @@ public class ThemeFragment extends Fragment implements ThemeContract.View, Theme
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ThemeAdapter adapter = new ThemeAdapter(getActivity(), list);
+        TopicAdapter adapter = new TopicAdapter(getActivity(), list);
         mRecyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
     }
