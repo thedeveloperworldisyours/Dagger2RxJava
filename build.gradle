@@ -40,4 +40,5 @@ ext {
     dagger = '2.10'
     mockito = '1.10.19'
     assertj = '2.7.0'
+    constraint = '1.0.2'
 }

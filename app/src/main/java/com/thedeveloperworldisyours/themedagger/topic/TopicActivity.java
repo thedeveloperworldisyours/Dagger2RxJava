@@ -1,9 +1,5 @@
 package com.thedeveloperworldisyours.themedagger.topic;
 
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -15,7 +11,7 @@ import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider
 
 import javax.inject.Inject;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.thedeveloperworldisyours.themedagger.utils.Utils.addFragmentToActivity;
 
 public class TopicActivity extends AppCompatActivity {
 
@@ -50,12 +46,5 @@ public class TopicActivity extends AppCompatActivity {
 
     }
 
-    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
-                                             @NonNull Fragment fragment, int frameId) {
-        checkNotNull(fragmentManager);
-        checkNotNull(fragment);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(frameId, fragment);
-        transaction.commit();
-    }
+
 }

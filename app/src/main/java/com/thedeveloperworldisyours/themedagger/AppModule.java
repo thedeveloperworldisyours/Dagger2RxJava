@@ -1,7 +1,6 @@
 package com.thedeveloperworldisyours.themedagger;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
-import com.thedeveloperworldisyours.themedagger.data.Service;
 import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
 import com.thedeveloperworldisyours.themedagger.schedulers.SchedulerProvider;
 
@@ -13,7 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.thedeveloperworldisyours.themedagger.data.Service.URL_BASE;
+import static com.thedeveloperworldisyours.themedagger.utils.Constants.URL_BASE;
 
 /**
  * Created by javierg on 20/04/2017.

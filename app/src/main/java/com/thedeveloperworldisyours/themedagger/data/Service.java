@@ -10,7 +10,6 @@ import rx.Observable;
  */
 
 public interface Service {
-    String URL_BASE = "https://guessthebeach.herokuapp.com/api/";
 
     @GET("topics/")
     Observable<List<Topics>> getTopicsRx();

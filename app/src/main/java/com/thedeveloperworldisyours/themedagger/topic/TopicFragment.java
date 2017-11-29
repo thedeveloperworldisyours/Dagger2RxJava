@@ -1,6 +1,7 @@
 package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,8 +32,8 @@ public class TopicFragment extends Fragment implements TopicContract.View, Topic
     @BindView(R.id.theme_fragment_retry_button)
     Button mRetry;
 
-    @BindView(R.id.theme_fragment_relative_layout)
-    RelativeLayout mRelativeLayout;
+    @BindView(R.id.theme_fragment_constraintLayout)
+    ConstraintLayout mRelativeLayout;
 
     @BindView(R.id.theme_fragment_recycler_view)
     RecyclerView mRecyclerView;
