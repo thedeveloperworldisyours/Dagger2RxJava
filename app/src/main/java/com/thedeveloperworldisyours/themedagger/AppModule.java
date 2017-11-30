@@ -1,8 +1,8 @@
 package com.thedeveloperworldisyours.themedagger;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
-import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
-import com.thedeveloperworldisyours.themedagger.schedulers.SchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.BaseSchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.SchedulerProvider;
 
 import javax.inject.Singleton;
 

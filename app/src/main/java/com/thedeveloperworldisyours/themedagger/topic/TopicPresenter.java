@@ -1,11 +1,10 @@
 package com.thedeveloperworldisyours.themedagger.topic;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
-import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.BaseSchedulerProvider;
 
 import java.util.List;
 

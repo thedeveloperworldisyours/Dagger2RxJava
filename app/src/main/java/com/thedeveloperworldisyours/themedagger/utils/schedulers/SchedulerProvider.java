@@ -1,7 +1,6 @@
-package com.thedeveloperworldisyours.themedagger.schedulers;
+package com.thedeveloperworldisyours.themedagger.utils.schedulers;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;

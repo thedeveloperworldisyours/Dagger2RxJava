@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.thedeveloperworldisyours.themedagger.DiscernApplication;
 import com.thedeveloperworldisyours.themedagger.R;
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
-import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.BaseSchedulerProvider;
 
 
 import javax.inject.Inject;

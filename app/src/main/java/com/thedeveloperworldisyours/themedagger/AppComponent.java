@@ -13,6 +13,6 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
 
-    void inject(TopicActivity themeActivity);
+    void inject(TopicActivity topicActivity);
 
 }

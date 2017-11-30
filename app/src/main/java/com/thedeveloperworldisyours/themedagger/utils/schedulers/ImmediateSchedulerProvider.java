@@ -1,4 +1,4 @@
-package com.thedeveloperworldisyours.themedagger.schedulers;
+package com.thedeveloperworldisyours.themedagger.utils.schedulers;
 
 import android.support.annotation.NonNull;
 

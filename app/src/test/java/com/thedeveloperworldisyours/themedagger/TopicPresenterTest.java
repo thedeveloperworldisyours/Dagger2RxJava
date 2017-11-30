@@ -2,8 +2,8 @@ package com.thedeveloperworldisyours.themedagger;
 
 import com.thedeveloperworldisyours.themedagger.data.RemoteDataSource;
 import com.thedeveloperworldisyours.themedagger.data.Topics;
-import com.thedeveloperworldisyours.themedagger.schedulers.BaseSchedulerProvider;
-import com.thedeveloperworldisyours.themedagger.schedulers.ImmediateSchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.BaseSchedulerProvider;
+import com.thedeveloperworldisyours.themedagger.utils.schedulers.ImmediateSchedulerProvider;
 import com.thedeveloperworldisyours.themedagger.topic.TopicContract;
 import com.thedeveloperworldisyours.themedagger.topic.TopicPresenter;
 
